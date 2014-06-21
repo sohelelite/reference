@@ -8,3 +8,5 @@
 	git remote add origin <remote repository URL>
 ###### Push the changes to remote repository 
 	git push origin master
+###### Clone remote repository
+        git clone <remote repository URL>
