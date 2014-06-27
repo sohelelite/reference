@@ -10,3 +10,5 @@
 	git push origin master
 ###### Clone remote repository
         git clone <remote repository URL>
+###### Update repository
+	git pull 
