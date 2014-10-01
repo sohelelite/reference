@@ -21,3 +21,45 @@ GO
 SET ANSI_PADDING OFF
 GO
 INSERT [dbo].[AdminUser] ([UserName], [Password], [Active]) VALUES (N'admin', N'admin@1234', N'Y')
+
+
+/****** Object:  Table [dbo].[AdminMenu]    Script Date: 01-10-2014 15:58:33 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[AdminMenu](
+	[MenuID] [int] IDENTITY(1,1) NOT NULL,
+	[PageID] [int] NOT NULL,
+	[ParentMenuID] [int] NOT NULL,
+	[Name] [varchar](500) NOT NULL,
+	[Url] [varchar](500) NULL,
+	[Level] [int] NOT NULL,
+	[Icon] [varchar](100) NULL,
+	[Index] [int] NOT NULL,
+	[Active] [char](1) NOT NULL,
+ CONSTRAINT [PK_AdminMenu] PRIMARY KEY CLUSTERED 
+(
+	[MenuID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (0, 0, N'Settings', N'#', 0, N'fa fa-cogs', 5, N'Y');
+INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (2, 1, N'Form Page', N'#', 1, N'', 1, N'Y');
+INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (1, 1, N'Admin Menu', N'#', 1, N'', 2, N'Y');
+INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (3, 1, N'Form Structure', N'#', 1, N'', 3, N'Y');
+INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (4, 12, N'Users', N'#', 1, N'', 4, N'Y');
+INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (0, 0, N'Content', N'', 0, N'fa fa-desktop', 2, N'Y');
+INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (5, 6, N'Page Structure', N'#', 1, N'', 3, N'Y');
+INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (6, 6, N'Layout', N'#', 1, N'', 2, N'Y');
+INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (7, 6, N'Application', N'#', 1, N'', 1, N'Y');
+INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (8, 6, N'Menu', N'', 1, N'', 4, N'Y');
+INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (0, 0, N'User', N'', 0, N'fa fa-user', 3, N'Y');
+INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (9, 6, N'Page', N'', 1, N'', 5, N'Y');
+INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (10, 6, N'Home Page Content', N'', 1, N'', 6, N'Y');
+INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (0, 0, N'Applications', N'', 0, N'fa fa-thumb-tack', 2, N'Y');
