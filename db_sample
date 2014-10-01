@@ -529,3 +529,211 @@ INNER JOIN CMSPage AS c ON a.PageID = c.PageID
 
 
 GO
+
+
+SET IDENTITY_INSERT [dbo].[FormPage] ON 
+
+INSERT [dbo].[FormPage] ([PageID], [Title], [Desc], [Grid], [Callback], [Model], [Active]) VALUES (1, N'Admin Menu', N'List of all the Menu in Admin Section', N'{
+	"Model":"AdminMenu",
+	"PKID":"MenuID",
+	"ColumnName":"[''MenuID'', ''Name'', ''Level'', ''Index'', ''Active'']",
+	"ColumnHeading":"[''Id'', ''Name'', ''Level'', ''Index'', ''Active'']",
+	"ColumnModel":"[         { name: ''MenuID'',   index: ''MenuID'',    searchoptions: { sopt: [''eq'', ''ne'', ''lt'', ''le'', ''gt'', ''ge'']} },         { name: ''Name'',     index: ''Name'',      searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },         { name: ''Level'',    index: ''Level'',     searchoptions: { sopt: [''eq'', ''ne'', ''lt'', ''le'', ''gt'', ''ge'']} },         { name: ''Index'',    index: ''Index'',     searchoptions: { sopt: [''eq'', ''ne'', ''lt'', ''le'', ''gt'', ''ge'']} },         { name: ''Active'',   index: ''Active'',    searchoptions: { sopt: [''eq'', ''ne'']} }        ]"
+}', N'{"SubmitValidation" : { "Columns" : "Name" }}', N'AdminMenu', N'Y')
+INSERT [dbo].[FormPage] ([PageID], [Title], [Desc], [Grid], [Callback], [Model], [Active]) VALUES (2, N'Form Page', N'List of all the Admin Pages', N'{   "Model":"FormPage",   "PKID":"PageID",   "ColumnName":"[''PageID'', ''Title'', ''Model'', ''Active'']",   "ColumnHeading":"[''Id'', ''Name'', ''Model'', ''Active'']",   "ColumnModel":"[                { name: ''PageID'',   index: ''PageID'',    searchoptions: { sopt: [''eq'', ''ne'', ''lt'', ''le'', ''gt'', ''ge'']} },                { name: ''Title'',     index: ''Title'',      searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },                { name: ''Model'',    index: ''Model'',     searchoptions: { sopt: [''eq'', ''ne'', ''lt'', ''le'', ''gt'', ''ge'']} },                { name: ''Active'',   index: ''Active'',    searchoptions: { sopt: [''eq'', ''ne'']} }               ]"  }', N'', N'FormPage', N'Y')
+INSERT [dbo].[FormPage] ([PageID], [Title], [Desc], [Grid], [Callback], [Model], [Active]) VALUES (3, N'Form Structure', N'List of all the Admin Pages Structure', N'{      "Model":"FormStructure",      "PKID":"it.StructureID",      "ColumnName":"[''it.StructureID'',''a.Title'', ''it.StructureControl'', ''it.StructureName'',''it.Index'', ''it.Active'']",      "ColumnHeading":"[''Id'', ''Page'', ''Control'',''Name'',''Index'',''Active'']",      "ColumnModel":"[               {name: ''it.StructureID'',  index: ''it.StructureID'',  searchoptions: { sopt: [''eq'', ''ne'', ''lt'', ''le'', ''gt'', ''ge'']}},               {name: ''a.Title'',    index: ''a.Title'',    searchoptions: { sopt: [''cn'', ''eq'', ''ne'']}},               {name: ''it.StructureControl'', index: ''it.StructureControl'',searchoptions: { sopt: [''cn'', ''eq'', ''ne'']}},               {name: ''it.StructureName'', index: ''it.StructureName'', searchoptions: { sopt: [''cn'', ''eq'', ''ne'']}},               {name: ''it.Index'',   index: ''it.Index'',   searchoptions: { sopt: [''eq'', ''ne'', ''lt'', ''le'', ''gt'', ''ge'']}},                      {name: ''it.Active'',   index: ''it.Active'',   searchoptions: { sopt: [''eq'', ''ne'']}}                     ]",      "JoinTableQuery" : " INNER JOIN FormPages AS a ON a.PageID = it.PageID"    }', N'', N'FormStructure', N'Y')
+INSERT [dbo].[FormPage] ([PageID], [Title], [Desc], [Grid], [Callback], [Model], [Active]) VALUES (4, N'Users', N'List of user for administration', N'{      
+	"ColumnHeading" : 	"[''ID'',''Name'',''Active'']",       
+	"ColumnModel" 	: 	"[                  
+							{ 
+								name: ''Id'', index: ''Id'', searchoptions: { sopt: [''eq'', ''ne'', ''lt'', ''le'', ''gt'', ''ge'']} 
+							},
+							{ 
+								name: ''Name'', index: ''Name'', searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} 
+							},
+							{ 
+								name: ''Active'', index: ''Active'', searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} 
+							},
+						]",       
+	"ColumnName"  	:	"[''Id'',''UserName'',''Active'']",       
+	"Model"       	: 	"AdminUser",       
+	"PKID"        	:	"Id"
+}
+', N'{
+	"SubmitValidation" : { "Columns" : "UserName" }
+}', N'AdminUser', N'Y')
+INSERT [dbo].[FormPage] ([PageID], [Title], [Desc], [Grid], [Callback], [Model], [Active]) VALUES (5, N'Page Structure', N'List of all Web form Structure', N'{
+	"Model":"PageStructure",
+	"PKID":"PageStructureID",
+	"ColumnName":"[''PageStructureID'', ''ControlName'', ''Title'', ''Active'']",
+	"ColumnHeading":"[''Id'', ''Control Name'', ''Title'', ''Active'']",
+	"ColumnModel":"[         
+					{ name: ''PageStructureID'',   index: ''PageStructureID'',    searchoptions: { sopt: [''eq'', ''ne'', ''lt'', ''le'', ''gt'', ''ge'']} },         
+					{ name: ''ControlName'',     index: ''ControlName'',      searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },         
+					{ name: ''Title'',    index: ''Title'',     searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },         
+					{ name: ''Active'',   index: ''Active'',    searchoptions: { sopt: [''eq'', ''ne'']} }        
+					]"
+}', N'{"SubmitValidation" : { "Columns" : "Title" }}', N'PageStructure', N'Y')
+INSERT [dbo].[FormPage] ([PageID], [Title], [Desc], [Grid], [Callback], [Model], [Active]) VALUES (6, N'Layout', N'List of all layout', N'{
+	"Model":"Layout",
+	"PKID":"LayoutID",
+	"ColumnName":"[''LayoutID'', ''Name'', ''Type'', ''Active'']",
+	"ColumnHeading":"[''Id'', ''Name'', ''Type'', ''Active'']",
+	"ColumnModel":"[         
+					{ name: ''LayoutID'',   index: ''LayoutID'',    searchoptions: { sopt: [''eq'', ''ne'', ''lt'', ''le'', ''gt'', ''ge'']} },         
+					{ name: ''Name'',     index: ''Name'',      searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },         
+					{ name: ''Type'',    index: ''Type'',     searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },         
+					{ name: ''Active'',   index: ''Active'',    searchoptions: { sopt: [''eq'', ''ne'']} }        
+					]"
+}', N'{"SubmitValidation" : { "Columns" : "Name" }}', N'Layout', N'Y')
+INSERT [dbo].[FormPage] ([PageID], [Title], [Desc], [Grid], [Callback], [Model], [Active]) VALUES (7, N'Application', N'List of all CMS Applications', N'{
+	"Model":"Application",
+	"PKID":"AppID",
+	"ColumnName":"[''AppID'', ''Name'', ''Url'', ''Active'']",
+	"ColumnHeading":"[''Id'', ''Name'', ''Url'', ''Active'']",
+	"ColumnModel":"[         
+					{ name: ''AppID'',   index: ''AppID'',    searchoptions: { sopt: [''eq'', ''ne'', ''lt'', ''le'', ''gt'', ''ge'']} },         
+					{ name: ''Name'',     index: ''Name'',      searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },         
+					{ name: ''Url'',    index: ''Url'',     searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },         
+					{ name: ''Active'',   index: ''Active'',    searchoptions: { sopt: [''eq'', ''ne'']} }        
+					]"
+}', N'{"SubmitValidation" : { "Columns" : "Name" }}', N'Application', N'Y')
+INSERT [dbo].[FormPage] ([PageID], [Title], [Desc], [Grid], [Callback], [Model], [Active]) VALUES (8, N'Menu', N'List of Content Management Menu', N'{
+	"Model":"ViewMenu",
+	"PKID":"MenuID",
+	"ColumnName":"[''MenuID'', ''Title'', ''ParentName'',''Location'',''Index'',''Active'']",
+	"ColumnHeading":"[''Id'', ''Title'', ''ParentName'',''Location'',''Index'', ''Active'']",
+	"ColumnModel":"[         
+					{ name: ''MenuID'',   		index: ''MenuID'',    		searchoptions: { sopt: [''eq'', ''ne'', ''lt'', ''le'', ''gt'', ''ge'']} },         
+					{ name: ''Title'',     		index: ''Title'',      		searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },         
+					{ name: ''ParentName'',    	index: ''ParentName'',     	searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },         
+					{ name: ''Location'',   		index: ''Location'',    			searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} }, 
+					{ name: ''Index'',   		index: ''Index'',    			searchoptions: { sopt: [''eq'', ''ne'', ''lt'', ''le'', ''gt'', ''ge'']} }, 
+					{ name: ''Active'',   		index: ''Active'',    		searchoptions: { sopt: [''eq'', ''ne'']} }        
+					]"
+}', N'', N'CMSMenu', N'Y')
+INSERT [dbo].[FormPage] ([PageID], [Title], [Desc], [Grid], [Callback], [Model], [Active]) VALUES (9, N'Page', N'List of all CMS Pages', N'{
+	"Model":"ViewPage",
+	"PKID":"PageID",
+	"ColumnName":"[''PageID'', ''Menu'', ''Layout'', ''Title'']",
+	"ColumnHeading":"[''Id'', ''Menu'', ''Layout'', ''Title'']",
+	"ColumnModel":"[         
+					{ name: ''PageID'',   index: ''PageID'',   searchoptions: { sopt: [''eq'', ''ne'', ''lt'', ''le'', ''gt'', ''ge'']} },         
+					{ name: ''Menu'',     index: ''Menu'',     searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },         
+					{ name: ''Layout'',   index: ''Layout'',   searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },         
+					{ name: ''Title'',   	index: ''Title'',    searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} }        
+					]"
+}', N'', N'CMSPage', N'Y')
+INSERT [dbo].[FormPage] ([PageID], [Title], [Desc], [Grid], [Callback], [Model], [Active]) VALUES (10, N'Home Page Content', N'', N'{
+	"Model":"HomePage",
+	"PKID":"ID",
+	"ColumnName":"[''ID'', ''Key'', ''Value'', ''Type'']",
+	"ColumnHeading":"[''Id'', ''Key'', ''Value'',''Type'']",
+	"ColumnModel":"[         
+					{ name: ''ID'',   index: ''ID'',   searchoptions: { sopt: [''eq'', ''ne'', ''lt'', ''le'', ''gt'', ''ge'']} },         
+					{ name: ''Key'',     index: ''Key'',     searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },         
+					{ name: ''Value'',   index: ''Value'',   searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },
+					{ name: ''Type'',   index: ''Type'',   searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} } 					
+					]"
+}', N'', N'HomePage', N'Y')
+SET IDENTITY_INSERT [dbo].[FormPage] OFF
+
+SET IDENTITY_INSERT [dbo].[FormStructure] ON 
+
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (1, 2, N'Textbox', N'Title', N'txtTitle', N'Title', N'input-xxlarge', N'Y', 500, N'', N'Page Title', 1, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (2, 2, N'Textarea', N'Description', N'txtDesc', N'Desc', N'input-xxlarge', N'N', 0, N'', N'Page description', 2, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (3, 2, N'Textarea', N'Grid JSON', N'txtGrid', N'Grid', N'input-xxlarge', N'N', 0, N'', N'Gridview JSON String', 3, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (4, 2, N'Textarea', N'Callback Function', N'txtCallback', N'Callback', N'input-xxlarge', N'N', 0, N'', N'Page description', 4, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (5, 2, N'Checkbox', N'Active', N'chkActive', N'Active', N'checkbox', N'N', 0, N'', N'Active/Deactive', 6, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (6, 2, N'Textbox', N'Model Name', N'txtModel', N'Model', N'input-xxlarge', N'N', 0, N'', N'Tootltip Model Name', 5, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (7, 1, N'DropdownList', N'Page', N'ddlPage', N'PageID', N'', N'N', 0, N'{   "Dropdown":      {       "ParentDataSource":"Generic",       "Generic" :           {           "ModelName" : "FormPage",           "DataTextField" : "Title",           "DataValueField" : "PageID"          }              }  }', N'', 1, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (8, 1, N'DropdownList', N'Parent Menu', N'ddlParentMenu', N'ParentMenuID', N'', N'N', 0, N'{"Dropdown":{"ParentDataSource":"ParentAdminMenu"}}', N'', 2, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (9, 1, N'Textbox', N'Name', N'txtName', N'Name', N'input-xxlarge', N'Y', 500, N'', N'Menu Name', 3, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (10, 1, N'Textbox', N'URL', N'txtURL', N'Url', N'input-xxlarge', N'N', 0, N'', N'URL', 4, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (11, 1, N'Textbox', N'Level', N'txtLevel', N'Level', N'input-sm', N'Y', 1, N'{"Callback" : {"AcceptNumber":"txtLevel"}}', N'Level', 5, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (12, 1, N'Textbox', N'Index', N'txtIndex', N'Index', N'input-sm', N'Y', 2, N'{"Callback" : {"AcceptNumber":"txtIndex"}}', N'Index', 6, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (13, 1, N'Checkbox', N'Active', N'chkActive', N'Active', N'checkbox', N'N', 0, N'', N'', 7, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (14, 3, N'DropdownList', N'Page', N'ddlPage', N'PageID', N'', N'Y', 0, N'{   "Dropdown":      {       "ParentDataSource":"Generic",       "Generic" :           {           "ModelName" : "FormPage",           "DataTextField" : "Title",           "DataValueField" : "PageID"          }              }  }', N'', 1, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (15, 3, N'Textbox', N'Control', N'txtControl', N'StructureControl', N'input-xxlarge', N'Y', 500, N'', N'', 2, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (16, 3, N'Textbox', N'Name', N'txtName', N'StructureName', N'input-xxlarge', N'Y', 500, N'', N'', 3, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (17, 3, N'Textbox', N'RenderID', N'txtRenderID', N'RenderID', N'input-xxlarge', N'Y', 500, N'', N'', 4, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (18, 3, N'Textbox', N'Entity Field', N'txtEntityField', N'EntityFieldName', N'input-xxlarge', N'Y', 500, N'', N'', 5, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (19, 3, N'Textbox', N'Style', N'txtStyle', N'StyleName', N'input-xxlarge', N'N', 0, N'', N'', 6, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (20, 3, N'Checkbox', N'Mandatory', N'chkMandatory', N'Mandatory', N'checkbox', N'N', 0, N'', N'', 7, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (21, 3, N'Textbox', N'MaxLength', N'txtMaxLength', N'MaxLength', N'input-sm', N'Y', 5, N'{"Callback" :{"AcceptNumber":"true"}}', N'', 8, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (22, 3, N'Textarea', N'Callback Function', N'txtCallback', N'Callback', N'input-xxlarge', N'N', 0, N'', N'', 9, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (23, 3, N'Textbox', N'Tooltip', N'txtTootltip', N'Tooltip', N'input-xxlarge', N'N', 0, N'', N'', 10, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (24, 3, N'Textbox', N'Index', N'txtIndex', N'Index', N'input-sm', N'Y', 2, N'{"Callback" :{"AcceptNumber":"true"}}', N'', 11, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (25, 3, N'Checkbox', N'Active', N'chkActive', N'Active', N'checkbox', N'N', 0, N'', N'', 12, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (26, 1, N'Textbox', N'Icon', N'txt_Icon', N'Icon', N'input-sm', N'N', 0, N'', N'', 8, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (27, 4, N'Textbox', N'UserName', N'txt_UserName', N'UserName', N'input-xxlarge', N'Y', 50, N'', N'', 1, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (28, 4, N'Textbox', N'Password', N'txt_Password', N'Password', N'input-xxlarge', N'Y', 20, N'', N'', 2, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (29, 4, N'Checkbox', N'Active', N'chkActive', N'Active', N'checkbox', N'N', 0, N'', N'Active/Deactive', 3, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (30, 6, N'Textbox', N'Name', N'txt_Name', N'Name', N'input-xxlarge', N'Y', 50, N'', N'', 1, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (31, 6, N'Textarea', N'Html', N'txt_Html', N'HtmlContent', N'input-xxlarge', N'Y', 0, N'', N'', 2, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (32, 5, N'Textbox', N'Control Name', N'txt_ControlName', N'ControlName', N'input-xxlarge', N'Y', 50, N'', N'', 1, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (33, 5, N'Textbox', N'Title', N'txt_Title', N'Title', N'input-xxlarge', N'Y', 100, N'', N'', 2, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (34, 5, N'Textbox', N'RenderTag', N'txt_RenderTag', N'RenderTag', N'', N'Y', 500, N'', N'', 3, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (35, 5, N'Checkbox', N'Active', N'chk_Active', N'Active', N'checkbox', N'N', 0, N'', N'', 7, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (36, 7, N'Textbox', N'Name', N'txt_Name', N'Name', N'input-xxlarge', N'Y', 50, N'', N'', 1, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (37, 7, N'Textarea', N'MetaTitle', N'txt_MetaTitle', N'MetaTitle', N'input-xxlarge', N'N', 0, N'', N'', 3, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (38, 7, N'Checkbox', N'Active', N'chk_Active', N'Active', N'checkbox', N'N', 0, N'', N'', 8, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (39, 8, N'Textbox', N'Allias', N'txt_Allias', N'Allias', N'input-xxlarge', N'Y', 500, N'', N'', 3, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (40, 8, N'Textbox', N'Index', N'txt_Index', N'Index', N'input-mini', N'Y', 2, N'{"Callback" : {"AcceptNumber":"txtIndex"}}', N'', 6, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (41, 8, N'Checkbox', N'Active', N'chk_Active', N'Active', N'checkbox', N'N', 0, N'', N'', 7, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (42, 8, N'DropdownList', N'Parent', N'ddl_Parent', N'ParentID', N'', N'N', 0, N'{
+	"Dropdown":
+				{
+					"ParentDataSource":"ParentMenu"								
+				}
+}', N'', 4, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (43, 8, N'Textbox', N'Level', N'txt_Level', N'Level', N'input-mini', N'Y', 2, N'{"Callback" :{"AcceptNumber":"true"}}', N'', 5, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (44, 8, N'DropdownList', N'Application', N'ddl_Application', N'AppID', N'', N'Y', 0, N'{
+	"Dropdown":
+				{
+					"ParentDataSource":"Generic",
+					"Generic" : 
+								{
+									"ModelName" 		: "Application",
+									"DataTextField" 	: "Name",
+									"DataValueField" 	: "AppID"
+								}								
+				}
+}', N'', 1, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (45, 8, N'Textbox', N'Title', N'txt_Title', N'Title', N'input-xxlarge', N'Y', 500, N'', N'', 2, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (46, 7, N'Textarea', N'PageText', N'txt_PageText', N'PageText', N'input-xxlarge', N'N', 0, N'', N'', 2, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (47, 5, N'Textbox', N'RenderID', N'txt_RenderID', N'RenderID', N'input-xxlarge', N'N', 0, N'', N'', 4, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (48, 5, N'Textbox', N'Validation', N'txt_Validation', N'Validation', N'input-xxlarge', N'N', 0, N'', N'', 5, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (49, 5, N'Textbox', N'DefaultContent', N'txt_DefaultContent', N'DefaultContent', N'input-xxlarge', N'N', 0, N'', N'', 6, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (50, 6, N'ImageUpload', N'Image', N'img_Layout', N'Image', N'', N'N', 0, N'{
+	"Callback" :
+				{
+					"ImageUpload":
+								{
+									"ImageWidth" 	: "150",
+									"ImageHeight"	: "200",
+									"ControlID"		: "img_Layout"
+								}
+				}
+}', N'', 3, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (51, 6, N'Textbox', N'Type', N'txt_Type', N'Type', N'input-xxlarge', N'N', 0, N'', N'', 4, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (52, 6, N'Checkbox', N'Active', N'chk_Active', N'Active', N'checkbox', N'N', 0, N'', N'', 5, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (53, 7, N'Textarea', N'MetaDesc', N'txt_MetaDesc', N'MetaDesc', N'input-xxlarge', N'N', 0, N'', N'', 4, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (54, 7, N'Textarea', N'MetaKeyWord', N'txt_MetaKeyWord', N'MetaKeyWord', N'input-xxlarge', N'N', 0, N'', N'', 5, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (55, 7, N'ImageUpload', N'Pin Image', N'img_Pin_Image', N'PinImage', N'', N'N', 0, N'{
+	"Callback" :
+				{
+					"ImageUpload":
+								{
+									"ImageWidth" 	: "150",
+									"ImageHeight"	: "200",
+									"ControlID"		: "img_Pin_Image"
+								}
+				}
+}', N'', 6, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (56, 7, N'Textbox', N'URL', N'txt_Url', N'Url', N'input-xxlarge', N'N', 0, N'', N'', 7, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (57, 8, N'DropdownList', N'Menu Location', N'ddlMenuLoc', N'Location', N'input-xlarge', N'Y', 0, N'{   "Dropdown":      {       "ParentDataSource":"MenuLocation"              }  }', N'', 0, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (58, 10, N'Textbox', N'Key', N'txt_Key', N'Key', N'input-xxlarge', N'Y', 500, N'', N'', 1, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (59, 10, N'HtmlEditor', N'Value', N'txt_Value', N'Value', N'', N'N', 0, N'{"Editor":{"toolbar":"Intermediate","Height" : "100px","Color":"#fff"}}', N'', 2, N'Y')
+INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (60, 10, N'Textbox', N'Type', N'txt_Type', N'Type', N'input-xxlarge', N'Y', 500, N'', N'', 3, N'Y')
+SET IDENTITY_INSERT [dbo].[FormStructure] OFF
