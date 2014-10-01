@@ -63,6 +63,7 @@ INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Ico
 INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (9, 6, N'Page', N'', 1, N'', 5, N'Y');
 INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (10, 6, N'Home Page Content', N'', 1, N'', 6, N'Y');
 INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (0, 0, N'Applications', N'', 0, N'fa fa-thumb-tack', 2, N'Y');
+INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (11, 1, N'Map Layout Structure', N'', 1, N'', 6, N'Y')
 
 /****** Object:  Table [dbo].[Application]    Script Date: 01-10-2014 15:58:34 ******/
 SET ANSI_NULLS ON
@@ -690,6 +691,22 @@ INSERT [dbo].[FormPage] ([PageID], [Title], [Desc], [Grid], [Callback], [Model],
 					{ name: ''Type'',   index: ''Type'',   searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} } 					
 					]"
 }', N'', N'HomePage', N'Y')
+INSERT [dbo].[FormPage] ([Title], [Desc], [Grid], [Callback], [Model], [Active]) VALUES (N'Map Layout Structure', N'List of mapping between Layout and Page strucutre', N'{   
+	"Model"        :"ViewMapLayoutStructure",   
+	"PKID"         :"ID",   
+	"ColumnName"   :"[''ID'', ''Name'', ''Title'', ''RenderTag'', ''RenderID'', ''Active'']",   
+	"ColumnHeading":"[''Id'', ''Name'', ''Title'', ''RenderTag'', ''RenderID'', ''Active'']",   
+	"ColumnModel"  :"[                
+						{ name: ''ID'',   	    index: ''ID'',    		searchoptions: { sopt: [''eq'', ''ne'', ''lt'', ''le'', ''gt'', ''ge'']} },                
+						{ name: ''Name'',   	    index: ''Name'',    	    searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },                
+						{ name: ''Title'',   	    index: ''Title'',    	    searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },   
+						{ name: ''RenderTag'',   	index: ''RenderTag'',    	searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },   
+						{ name: ''RenderID'',   	index: ''RenderID'',    	searchoptions: { sopt: [''cn'', ''eq'', ''ne'']} },   						
+						{ name: ''Active'',   	index: ''Active'',    	searchoptions: { sopt: [''eq'', ''ne'']} }               
+					]"  
+}
+
+', N'', N'MapLayoutStructure', N'Y')
 SET IDENTITY_INSERT [dbo].[FormPage] OFF
 
 SET IDENTITY_INSERT [dbo].[FormStructure] ON 
@@ -790,4 +807,29 @@ INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [Stru
 INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (58, 10, N'Textbox', N'Key', N'txt_Key', N'Key', N'input-xxlarge', N'Y', 500, N'', N'', 1, N'Y')
 INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (59, 10, N'HtmlEditor', N'Value', N'txt_Value', N'Value', N'', N'N', 0, N'{"Editor":{"toolbar":"Intermediate","Height" : "100px","Color":"#fff"}}', N'', 2, N'Y')
 INSERT [dbo].[FormStructure] ([StructureID], [PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (60, 10, N'Textbox', N'Type', N'txt_Type', N'Type', N'input-xxlarge', N'Y', 500, N'', N'', 3, N'Y')
+INSERT [dbo].[FormStructure] ([PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (11, N'DropdownList', N'Layout', N'ddl_LayoutID', N'LayoutID', N'', N'Y', 0, N'{
+	"Dropdown":
+				{
+					"ParentDataSource":"Generic",
+					"Generic" : 
+								{
+									"ModelName" : "Layout",
+									"DataTextField" : "Name",
+									"DataValueField" : "LayoutID"
+								}								
+				}
+}', N'', 1, N'Y')
+INSERT [dbo].[FormStructure] ([PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (11, N'DropdownList', N'Page Structure', N'txt_PageStructureID', N'PageStructureID', N'', N'Y', 0, N'{
+	"Dropdown":
+				{
+					"ParentDataSource":"Generic",
+					"Generic" : 
+								{
+									"ModelName" : "PageStructure",
+									"DataTextField" : "Title",
+									"DataValueField" : "PageStructureID"
+								}								
+				}
+}', N'', 2, N'Y')
+INSERT [dbo].[FormStructure] ([PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (11, N'Checkbox', N'Active', N'chk_Active', N'Active', N'checkbox', N'N', 0, N'', N'', 3, N'Y')
 SET IDENTITY_INSERT [dbo].[FormStructure] OFF
