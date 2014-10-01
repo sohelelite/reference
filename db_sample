@@ -1,5 +1,5 @@
 ###### Create AdminUser
-`/****** Object:  Table [dbo].[AdminUser]    Script Date: 01-10-2014 15:58:34 ******/
+/****** Object:  Table [dbo].[AdminUser]    Script Date: 01-10-2014 15:58:34 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -20,4 +20,4 @@ CREATE TABLE [dbo].[AdminUser](
 GO
 SET ANSI_PADDING OFF
 GO
-INSERT [dbo].[AdminUser] ([UserName], [Password], [Active]) VALUES (N'admin', N'admin@1234', N'Y')`
+INSERT [dbo].[AdminUser] ([UserName], [Password], [Active]) VALUES (N'admin', N'admin@1234', N'Y')
