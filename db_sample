@@ -63,3 +63,469 @@ INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Ico
 INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (9, 6, N'Page', N'', 1, N'', 5, N'Y');
 INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (10, 6, N'Home Page Content', N'', 1, N'', 6, N'Y');
 INSERT [dbo].[AdminMenu] ([PageID], [ParentMenuID], [Name], [Url], [Level], [Icon], [Index], [Active]) VALUES (0, 0, N'Applications', N'', 0, N'fa fa-thumb-tack', 2, N'Y');
+
+/****** Object:  Table [dbo].[Application]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Application](
+	[AppID] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](100) NOT NULL,
+	[PageText] [varchar](1000) NOT NULL,
+	[MetaTitle] [varchar](max) NULL,
+	[MetaDesc] [varchar](max) NULL,
+	[MetaKeyWord] [varchar](max) NULL,
+	[PinImage] [varchar](500) NULL,
+	[Url] [varchar](500) NULL,
+	[Active] [varchar](1) NULL,
+ CONSTRAINT [PK_Application] PRIMARY KEY CLUSTERED 
+(
+	[AppID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+
+INSERT [dbo].[Application] ([Name], [PageText], [MetaTitle], [MetaDesc], [MetaKeyWord], [PinImage], [Url], [Active]) VALUES (N'CMS', N'', N'', N'', N'', N'', N'', N'Y')
+INSERT [dbo].[Application] ([Name], [PageText], [MetaTitle], [MetaDesc], [MetaKeyWord], [PinImage], [Url], [Active]) VALUES (N'External', N'External Link', N'External Link', N'External Link', N'External Link', N'', N'', N'Y')
+INSERT [dbo].[Application] ([Name], [PageText], [MetaTitle], [MetaDesc], [MetaKeyWord], [PinImage], [Url], [Active]) VALUES (N'Internal', N'', N'', N'', N'', N'', N'', N'Y')
+INSERT [dbo].[Application] ([Name], [PageText], [MetaTitle], [MetaDesc], [MetaKeyWord], [PinImage], [Url], [Active]) VALUES (N'Home', N'', N'', N'', N'', N'', N'', N'Y')
+INSERT [dbo].[Application] ([Name], [PageText], [MetaTitle], [MetaDesc], [MetaKeyWord], [PinImage], [Url], [Active]) VALUES (N'Contact', N'', N'Contact Meta Title', N'Contact Meta Desc', N'Contact Metakeyword', N'', N'', N'Y')
+
+/****** Object:  Table [dbo].[CMSMenu]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[CMSMenu](
+	[MenuID] [int] IDENTITY(1,1) NOT NULL,
+	[Location] [varchar](20) NOT NULL,
+	[AppID] [int] NOT NULL,
+	[Title] [varchar](500) NOT NULL,
+	[Allias] [varchar](500) NOT NULL,
+	[ParentID] [int] NOT NULL,
+	[Icon] [varchar](50) NULL,
+	[Level] [int] NOT NULL,
+	[Index] [int] NOT NULL,
+	[Active] [varchar](1) NOT NULL,
+ CONSTRAINT [PK_CMSMenu] PRIMARY KEY CLUSTERED 
+(
+	[MenuID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[CMSPage]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[CMSPage](
+	[PageID] [int] IDENTITY(1,1) NOT NULL,
+	[LayoutID] [int] NOT NULL,
+	[MenuID] [int] NOT NULL,
+	[Title] [varchar](1000) NOT NULL,
+	[MetaTitle] [varchar](max) NULL,
+	[MetaDesc] [varchar](max) NULL,
+	[MetaKeyWord] [varchar](max) NULL,
+	[JavaScript] [nvarchar](max) NULL,
+ CONSTRAINT [PK_CMSPage] PRIMARY KEY CLUSTERED 
+(
+	[PageID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+
+/****** Object:  Table [dbo].[FormPage]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[FormPage](
+	[PageID] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [varchar](500) NOT NULL,
+	[Desc] [varchar](100) NULL,
+	[Grid] [varchar](max) NULL,
+	[Callback] [varchar](5000) NULL,
+	[Model] [varchar](500) NOT NULL,
+	[Active] [char](1) NOT NULL,
+ CONSTRAINT [PK_FormPage] PRIMARY KEY CLUSTERED 
+(
+	[PageID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[FormStructure]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[FormStructure](
+	[StructureID] [int] IDENTITY(1,1) NOT NULL,
+	[PageID] [int] NOT NULL,
+	[StructureControl] [varchar](50) NOT NULL,
+	[StructureName] [varchar](100) NOT NULL,
+	[RenderID] [varchar](100) NOT NULL,
+	[EntityFieldName] [varchar](100) NOT NULL,
+	[StyleName] [varchar](100) NULL,
+	[Mandatory] [char](1) NOT NULL,
+	[MaxLength] [int] NOT NULL,
+	[Callback] [varchar](max) NULL,
+	[Tooltip] [varchar](5000) NULL,
+	[Index] [int] NOT NULL,
+	[Active] [char](1) NOT NULL,
+ CONSTRAINT [PK_FormStructure] PRIMARY KEY CLUSTERED 
+(
+	[StructureID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[HomePage]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[HomePage](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Key] [varchar](500) NOT NULL,
+	[Value] [nvarchar](max) NULL,
+	[Type] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_HomePage] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[HomePageBanner]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[HomePageBanner](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Image] [varchar](500) NOT NULL,
+	[Href] [varchar](500) NOT NULL,
+	[Caption] [varchar](500) NULL,
+	[Index] [int] NOT NULL,
+	[Active] [char](1) NOT NULL,
+ CONSTRAINT [PK_HomePageBanner] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Layout]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Layout](
+	[LayoutID] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](500) NOT NULL,
+	[HtmlContent] [varchar](max) NOT NULL,
+	[Image] [varchar](500) NULL,
+	[Type] [varchar](50) NOT NULL,
+	[Active] [varchar](1) NOT NULL,
+ CONSTRAINT [PK_Layout] PRIMARY KEY CLUSTERED 
+(
+	[LayoutID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[MapLayoutStructure]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[MapLayoutStructure](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[LayoutID] [int] NOT NULL,
+	[PageStructureID] [int] NOT NULL,
+	[Active] [varchar](1) NOT NULL,
+ CONSTRAINT [PK_MapLayoutStructure] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[PageData]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[PageData](
+	[PageDataID] [int] IDENTITY(1,1) NOT NULL,
+	[PageID] [int] NOT NULL,
+	[PageStructureID] [int] NOT NULL,
+	[Content] [varchar](max) NULL,
+ CONSTRAINT [PK_PageData] PRIMARY KEY CLUSTERED 
+(
+	[PageDataID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[PagePublish]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PagePublish](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[MenuID] [int] NOT NULL,
+	[PageID] [int] NOT NULL,
+ CONSTRAINT [PK_PagePublish] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[PageStructure]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[PageStructure](
+	[PageStructureID] [int] IDENTITY(1,1) NOT NULL,
+	[ControlName] [varchar](50) NOT NULL,
+	[Title] [varchar](100) NOT NULL,
+	[RenderTag] [varchar](100) NULL,
+	[RenderID] [varchar](100) NOT NULL,
+	[Validation] [varchar](max) NULL,
+	[DefaultContent] [varchar](500) NULL,
+	[Active] [varchar](1) NOT NULL,
+ CONSTRAINT [PK_PageStructure] PRIMARY KEY CLUSTERED 
+(
+	[PageStructureID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[SlideShow]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[SlideShow](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [varchar](500) NULL,
+	[Desc] [varchar](max) NULL,
+	[ThumbImage] [varchar](500) NULL,
+	[Target] [varchar](50) NULL,
+	[TargetID] [int] NOT NULL,
+	[MetaTitle] [varchar](max) NULL,
+	[MetaDesc] [varchar](max) NULL,
+	[MetaKeyWord] [varchar](max) NULL,
+	[Index] [int] NOT NULL,
+	[ShowInGallery] [varchar](1) NOT NULL,
+	[Active] [varchar](1) NOT NULL,
+ CONSTRAINT [PK_SlideShow] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[SlideShowMedia]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[SlideShowMedia](
+	[MediaID] [int] IDENTITY(1,1) NOT NULL,
+	[SlideShowID] [int] NOT NULL,
+	[Caption] [varchar](1000) NULL,
+	[FileName] [varchar](1000) NOT NULL,
+	[Content] [nvarchar](max) NULL,
+	[Url] [varchar](500) NULL,
+	[Index] [int] NOT NULL,
+	[Active] [varchar](1) NOT NULL,
+ CONSTRAINT [PK_SlideShowMedia] PRIMARY KEY CLUSTERED 
+(
+	[MediaID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  View [dbo].[ViewAdminMenu]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE VIEW [dbo].[ViewAdminMenu] AS
+SELECT     a.MenuID, a.PageID, a.ParentMenuID, a.Name, a.Url, a.Level,a.Icon, a.[Index], a.Active, COALESCE
+                          ((SELECT     Name
+                              FROM         AdminMenu
+                              WHERE     MenuID = a.ParentMenuID), '') AS Section
+FROM         AdminMenu AS a
+
+
+GO
+/****** Object:  View [dbo].[ViewMapLayoutStructure]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE VIEW [dbo].[ViewMapLayoutStructure]
+AS
+SELECT     a.ID, a.LayoutID, a.PageStructureID, a.Active, b.Name, c.Title, c.RenderTag, c.RenderID, c.DefaultContent
+FROM         dbo.MapLayoutStructure AS a INNER JOIN
+                      dbo.Layout AS b ON a.LayoutID = b.LayoutID INNER JOIN
+                      dbo.PageStructure AS c ON a.PageStructureID = c.PageStructureID
+
+
+
+
+GO
+/****** Object:  View [dbo].[ViewMenu]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE VIEW [dbo].[ViewMenu]
+AS
+SELECT     a.MenuID, a.Location, a.AppID, b.Name AS AppName, a.Title, a.Allias, a.ParentID, a.[Level], a.[Index], a.Active, CASE WHEN a.ParentID = 0 THEN '' ELSE
+                          (SELECT     Title
+                            FROM          CMSMenu
+                            WHERE      MenuID = a.ParentID) END AS ParentName, CASE WHEN a.ParentID = 0 THEN '' ELSE
+                          (SELECT     Allias
+                            FROM          CMSMenu
+                            WHERE      MenuID = a.ParentID) END AS ParentAllias, CASE WHEN a.ParentID = 0 AND a.AppID = 1 THEN CASE WHEN
+                          (SELECT     ID
+                            FROM          PagePublish
+                            WHERE      MenuID = a.MenuID) IS NOT NULL THEN a.Allias ELSE CASE WHEN
+                          (SELECT     TOP 1 AppID
+                            FROM          CMSMenu
+                            WHERE      ParentID = a.MenuID
+                            ORDER BY [Index]) = 1 THEN a.Allias + '/' +
+                          (SELECT     TOP 1 Allias
+                            FROM          CMSMenu
+                            WHERE      ParentID = a.MenuID
+                            ORDER BY [Index]) ELSE
+                          (SELECT     TOP 1 Allias
+                            FROM          CMSMenu
+                            WHERE      ParentID = a.MenuID
+                            ORDER BY [Index]) END END ELSE a.Allias END AS ParentUrl
+FROM         dbo.CMSMenu AS a INNER JOIN
+                      dbo.Application AS b ON a.AppID = b.AppID
+
+
+
+
+GO
+/****** Object:  View [dbo].[ViewPage]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE VIEW [dbo].[ViewPage] AS 
+SELECT     a.PageID, a.LayoutID, a.MenuID, a.Title, a.MetaTitle, a.MetaDesc, a.MetaKeyWord, a.JavaScript, b.Name AS Layout, c.Title AS Menu
+FROM         dbo.CMSPage AS a INNER JOIN
+                      dbo.Layout AS b ON a.LayoutID = b.LayoutID INNER JOIN
+                      dbo.CMSMenu AS c ON a.MenuID = c.MenuID
+
+
+
+
+GO
+/****** Object:  View [dbo].[ViewPageData]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE VIEW [dbo].[ViewPageData]
+AS
+SELECT     a.PageDataID, a.PageID, a.PageStructureID, a.[Content], b.Title AS PageTitle, c.Title AS Structure, c.ControlName, c.RenderTag, c.RenderID, c.Validation, c.DefaultContent, c.Active
+FROM         dbo.PageData AS a INNER JOIN
+                      dbo.CMSPage AS b ON a.PageID = b.PageID INNER JOIN
+                      dbo.PageStructure AS c ON a.PageStructureID = c.PageStructureID
+
+
+
+
+GO
+/****** Object:  View [dbo].[ViewPagePublish]    Script Date: 01-10-2014 15:58:34 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE VIEW [dbo].[ViewPagePublish] AS 
+SELECT a.*, b.Title AS Menu, c.Title AS Page FROM PagePublish AS a
+INNER JOIN CMSMenu AS b ON a.MenuID = b.MenuID
+INNER JOIN CMSPage AS c ON a.PageID = c.PageID
+
+
+
+
+GO
