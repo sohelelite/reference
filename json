@@ -32,6 +32,10 @@
     }
 }
 
+{
+"AllowSubmit" : { "Submit" : "false"}
+}
+
 
 
 {
