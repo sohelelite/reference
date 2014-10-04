@@ -32,6 +32,8 @@
     }
 }
 
+{"SubmitValidation" : { "Columns" : "Name" }}
+
 {
 "AllowSubmit" : { "Submit" : "false"}
 }
