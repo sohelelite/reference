@@ -1,0 +1,48 @@
+{   
+	"Model"        :"Course",   
+	"PKID"         :"ID",   
+	"ColumnName"   :"['ID', 'Title', 'Active']",   
+	"ColumnHeading":"['Id', 'Title', 'Active']",   
+	"ColumnModel"  :"[                
+						{ name: 'ID',   	     index: 'ID',    	searchoptions: { sopt: ['eq', 'ne', 'lt', 'le', 'gt', 'ge']} },                
+						{ name: 'Title',   	    index: 'Title',    	    searchoptions: { sopt: ['cn', 'eq', 'ne']} },                
+						{ name: 'Active',   	index: 'Active',    	searchoptions: { sopt: ['eq', 'ne']} }               
+					]"  
+}
+
+
+{
+    "Dropdown": {
+        "ParentDataSource": "Generic",
+        "Generic": {
+            "ModelName"         : "ArticleType",
+            "DataTextField"     : "Name",
+            "DataValueField"    : "ArticleTypeID"
+        }
+    }
+}
+
+{
+    "Callback": {
+        "ImageUpload": {
+            "ImageWidth": "200",
+            "ImageHeight": "200",
+            "ControlID": "img_Article"
+        }
+    }
+}
+
+
+
+{
+	"Model":"SpotlightSlideShow",
+	"PKID":"ID",
+	"ColumnName":"['ID', 'Title', 'Active']",
+	"ColumnHeading":"['Id', 'Title', 'Active']",
+	"ColumnModel":"[         
+					{ name: 'ID',   index: 'ID',    searchoptions: { sopt: ['eq', 'ne', 'lt', 'le', 'gt', 'ge']} },         
+					{ name: 'Title',     index: 'Title',      searchoptions: { sopt: ['cn', 'eq', 'ne']} },         					
+					{ name: 'Active',   index: 'Active',    searchoptions: { sopt: ['eq', 'ne']} }        
+					]",
+    "RedirectURL":"administrator/Pages/slide-show.aspx?type=Spotlight&section=applications&page=spotlight-slideshow&action="
+}
