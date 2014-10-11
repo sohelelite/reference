@@ -32,6 +32,8 @@
     }
 }
 
+{"Callback" : {"DateField":"txtLevel"}}
+
 {"SubmitValidation" : { "Columns" : "Name" }}
 
 {
