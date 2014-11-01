@@ -15,3 +15,18 @@
 `INSERT INTO FormStructure VALUES (26,'Checkbox','Active','chkActive','Active','checkbox','N',0,'','',4,'Y');`
 
 `INSERT INTO FormStructure VALUES (1,'','','','','','',0,'','',1,'Y');`
+
+`INSERT INTO FormStructure VALUES (12,'DropdownList','Country','ddlCountry','CountryID','','Y',0,
+'
+{
+    "Dropdown": {
+        "ParentDataSource": "Generic",
+        "Generic": {
+            "ModelName"         : "Country",
+            "DataTextField"     : "CountryName",
+            "DataValueField"    : "CountryID"
+        }
+    }
+}
+',
+'',1,'Y');`
