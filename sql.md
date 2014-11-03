@@ -2,7 +2,7 @@
 `ALTER SCHEMA dbo TRANSFER mediafusion_01user.Spotlight;`
 
 ###### Form Structure SQL Statement
-`INSERT INTO FormStructure VALUES (26,'Textbox','Title','txtTitle','Title','input-xxlarge','Y',500,'','Page Title',1,'Y');`
+`INSERT INTO FormStructure VALUES (26,'Textbox','Title','txtTitle','Title','input-xxlarge','Y',500,'','',1,'Y');`
 
 `INSERT INTO FormStructure VALUES (26,'Textarea','Description','txtDesc','Desc','input-xxlarge','N',0,'','',2,'Y');`
 
