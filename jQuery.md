@@ -2,7 +2,7 @@
 `$('[id$=lblWishList]')`
 
 ###### Fill Dropdown using JSON
-`function fillZone() {  
+function fillZone() {  
             
             var ddlZone = $('#ddlZone');
             ddlZone.empty();
@@ -21,4 +21,4 @@
                 );
             });
 
-        }`
+        }
