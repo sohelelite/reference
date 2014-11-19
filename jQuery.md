@@ -1,6 +1,9 @@
 ###### Find server side control in jQuery
 `$('[id$=lblWishList]')`
 
+###### Find element with data attribute
+`('#grid [data-id="26"]')`
+
 ###### Fill Dropdown using JSON
 function fillZone() {  
             
