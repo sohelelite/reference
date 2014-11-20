@@ -21,6 +21,22 @@
         }
     }
 }
+//Refer chinmaya for cascading dropdownlist
+{
+    "AfterRenderControl" :
+    {
+        "Dropdown" :
+        {
+            "Level1" : 
+            {
+                "TargetID" : "ddl",
+                "ChildColumnName" : "TargetID",
+                "ChildRenderId" : "ddlTargetID"
+            }
+        }
+    } 
+    
+}
 
 {
     "Callback": {
