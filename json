@@ -72,3 +72,15 @@
 					]",
     "RedirectURL":"administrator/Pages/slide-show.aspx?type=Spotlight&section=applications&page=spotlight-slideshow&action="
 }
+
+//Export to Excel
+{
+    "Export": {
+        "ColumnHeading": "ID,SiteID, Name,Email, Active,Logdate", 
+        "ColumnName": "ID,SiteID, Name,Email, Active,Logdate", 
+        "Model": "Subscriber"
+    }, 
+    "SubmitValidation": {
+        "Columns": "Email"
+    }
+}
