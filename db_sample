@@ -23,6 +23,7 @@ GO
 INSERT [dbo].[AdminUser] ([UserName], [Password], [Active]) VALUES (N'admin', N'admin@1234', N'Y')
 
 
+
 /****** Object:  Table [dbo].[AdminMenu]    Script Date: 01-10-2014 15:58:33 ******/
 SET ANSI_NULLS ON
 GO
@@ -833,3 +834,98 @@ INSERT [dbo].[FormStructure] ([PageID], [StructureControl], [StructureName], [Re
 }', N'', 2, N'Y')
 INSERT [dbo].[FormStructure] ([PageID], [StructureControl], [StructureName], [RenderID], [EntityFieldName], [StyleName], [Mandatory], [MaxLength], [Callback], [Tooltip], [Index], [Active]) VALUES (11, N'Checkbox', N'Active', N'chk_Active', N'Active', N'checkbox', N'N', 0, N'', N'', 3, N'Y')
 SET IDENTITY_INSERT [dbo].[FormStructure] OFF
+
+
+/****** Object:  View [dbo].[ViewMenu]    Script Date: 18-Feb-15 8:27:25 PM ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+
+CREATE VIEW [dbo].[ViewMenu]
+AS
+SELECT     
+	a.MenuID, 
+	a.Location, 
+	a.AppID, 
+	b.Name AS AppName, 
+	a.Title, 
+	a.Allias, 
+	a.ParentID, 
+	a.[Level], 
+	a.[Index], 
+	a.Active, 
+	(SELECT COUNT(MenuID) FROM CMSMenu WHERE ParentID = a.MenuID AND a.Active = 'Y') AS ParentCount,
+	CASE 
+		WHEN 
+			a.ParentID = 0 
+		THEN 
+			'' 
+		ELSE
+			(SELECT Title FROM CMSMenu WHERE MenuID = a.ParentID) 
+		END 
+	AS ParentName, 
+	CASE 
+		WHEN 
+			a.ParentID = 0 
+		THEN 
+			'' 
+		ELSE 
+			(SELECT Allias FROM CMSMenu WHERE MenuID = a.ParentID) 
+		END 
+	AS ParentAllias, 
+	CASE 
+		WHEN 
+			a.ParentID = 0 
+		AND 
+			a.AppID = 1 
+		THEN 
+			CASE 
+				WHEN
+                    (SELECT ID FROM PagePublish WHERE MenuID = a.MenuID) IS NOT NULL 
+				THEN 
+					a.Allias 
+				ELSE 
+					CASE 
+						WHEN
+                          (SELECT TOP 1 AppID FROM CMSMenu WHERE ParentID = a.MenuID ORDER BY [Index]) = 1 THEN a.Allias + '/' +
+                          (SELECT TOP 1 Allias FROM CMSMenu WHERE ParentID = a.MenuID ORDER BY [Index]) 
+						ELSE
+                          (SELECT TOP 1 Allias FROM CMSMenu WHERE ParentID = a.MenuID ORDER BY [Index]) 
+						END 
+					END 
+				ELSE 
+					a.Allias 
+				END 
+		AS ParentUrl,
+	CASE
+		WHEN
+			a.AppID <> 1
+		THEN
+			CASE 
+				WHEN
+					a.AppID = 14 --Video 
+				THEN
+					''--(SELECT TOP 1 Alias FROM Video WHERE Active = 'Y' ORDER BY ID DESC)				
+				WHEN
+					a.AppID = 7 -- Books
+				THEN
+					''--(SELECT TOP 1 Alias FROM Book WHERE Active='Y' ORDER BY ID DESC)
+				ELSE
+					''				
+			END
+		ELSE
+			'CMS'
+		END
+	AS AppURL
+FROM         
+	dbo.CMSMenu AS a 
+INNER JOIN
+     dbo.Application AS b ON a.AppID = b.AppID
+GO
+
+
