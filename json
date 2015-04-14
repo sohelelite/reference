@@ -58,6 +58,7 @@
 "AllowSubmit" : { "Submit" : "false"}
 }
 
+{ "AllowDelete" : "true" }
 
 
 {
