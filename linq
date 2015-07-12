@@ -25,4 +25,8 @@ public IEnumerable<ViewProduct> GetProductByIDList(List<int> ids)
                 return repo.GetMany(i => ids.Contains(i.ProductID) && i.Active == "Y");
             }
         }
-====================================================================================================================              
+====================================================================================================================        
+//From Date - To Date
+var now = DateTime.Now.Date;
+var adv = repo.GetMany(i => i.Active == "Y" && now >= i.FromDate && now <= i.ToDate).OrderBy(o => o.Index);
+====================================================================================================================        
