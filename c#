@@ -1,0 +1,26 @@
+//Fill Dropdownlist
+<div class="form-group">
+    <label class="col-sm-3 control-label" for="ddlCategory">Category</label>
+    <div class="col-sm-9">
+        <asp:DropDownList runat="server" ID="ddlCategory" CssClass="form-control input-xxlarge" />
+    </div>
+</div> 
+
+DropDownManager ddlCategory = new DropDownManager
+    (
+        this.ddlCategory,
+        "Generic",
+        string.Empty,
+        JObject.Parse("{\"DataTextField\": \"Name\", \"DataValueField\": \"CategoryID\", \"ModelName\": \"BeyondProfitCategory\"}")
+    );
+ddlCategory.FillDropDownList();
+==================================================================================================================================
+DropDownManager ddlManagerPage = new DropDownManager
+    (
+        this.ddl_Page,
+        "PageNo",
+        string.Empty,
+        null
+    );
+ddlManagerPage.FillDropDownList();
+==================================================================================================================================
