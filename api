@@ -1,0 +1,20 @@
+/******************* POST Multiple *************************************/ 
+[HttpPost]
+public IHttpActionResult Post(dynamic Data)
+{
+    Int64 surveyTranId  = Convert.ToInt64(Convert.ToString(Data.SurveyTranID));            
+    var AssetsOwnedList = JsonConvert.DeserializeObject<List<String>>(Convert.ToString(Data.AssetsOwned));
+    var DocsList        = JsonConvert.DeserializeObject<IEnumerable<DocumentsTran>>(Convert.ToString(Data.DocumentList));
+}
+/******************* POST Multiple *************************************/
+
+/******************* Return Message *************************************/
+ReturnDTO dto = new ReturnDTO
+{
+    code    = 0,
+    message = string.Empty,
+    data    = string.Empty
+};
+
+return Ok(dto);
+/******************* Return Message *************************************/
