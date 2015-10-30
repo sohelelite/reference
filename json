@@ -52,6 +52,8 @@
 
 {"Callback" : {"DateField":"txtLevel"}}
 
+{"FileUpload":{"FileType":"image"}}
+
 {"SubmitValidation" : { "Columns" : "Name" }}
 
 {
