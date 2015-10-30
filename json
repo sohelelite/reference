@@ -56,6 +56,8 @@
 
 {"SubmitValidation" : { "Columns" : "Name" }}
 
+{"Editor":{"toolbar":"Intermediate","Height" : "100px","Color":"#fff"}}
+
 {
 "AllowSubmit" : { "Submit" : "false"}
 }
