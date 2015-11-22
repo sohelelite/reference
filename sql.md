@@ -33,5 +33,8 @@
 
 ###### Meta Title, Meta Keyword & Meta Desc Insert Query
 `INSERT INTO FormStructure VALUES (14,'Textarea','Meta Title','txtMetaTitle','MetaTitle','input-xxlarge','N',0,'','',12,'Y');`
+
 `INSERT INTO FormStructure VALUES (14,'Textarea','Meta Keywords','txtMetaKeyWord','MetaKeyword','input-xxlarge','N',0,'','',13,'Y');`
+
 `INSERT INTO FormStructure VALUES (14,'Textarea','Meta Description','txtMetaDesc','MetaDesc','input-xxlarge','N',0,'','',14,'Y');`
+
