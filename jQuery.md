@@ -4,6 +4,9 @@
 ###### Find element with data attribute
 `('#grid [data-id="26"]')`
 
+###### Find checkbox is checed
+`$('#loginRememberme').is(":checked")`
+
 ###### Fill Dropdown using JSON
 function fillZone() {  
             
